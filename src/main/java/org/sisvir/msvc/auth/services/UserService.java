@@ -3,6 +3,7 @@ package org.sisvir.msvc.auth.services;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -16,6 +17,10 @@ import java.util.Collections;
 
 @Service
 public class UserService implements UserDetailsService {
+
+    @Value("${uri.login}")
+    private String uriLogin;
+
     @Autowired
     private WebClient.Builder client;
 
@@ -28,7 +33,7 @@ public class UserService implements UserDetailsService {
             org.sisvir.msvc.auth.models.User user = client
                     .build()
                     .get()
-                    .uri("http://127.0.0.1:8003/users/login", uri -> uri.queryParam("userName", userName).build())
+                    .uri(uriLogin, uri -> uri.queryParam("userName", userName).build())
                     .accept(MediaType.APPLICATION_JSON)
                     .retrieve()
                     .bodyToMono(org.sisvir.msvc.auth.models.User.class)

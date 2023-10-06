@@ -13,6 +13,7 @@ import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -39,6 +40,12 @@ import org.springframework.security.web.authentication.LoginUrlAuthenticationEnt
 
 @Configuration
 public class SecurityConfig {
+
+    @Value("${redirect.uri.authorized}")
+    private String redirectUriAuthorized;
+
+    @Value("${redirect.uri.login}")
+    private String redirectUriLogin;
 
 //    @Autowired
 //    private Environment env;
@@ -108,8 +115,8 @@ public class SecurityConfig {
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
                 .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-                .redirectUri("http://127.0.0.1:8003/users/login/oauth2/code/msvc-users-client")
-                .redirectUri("http://127.0.0.1:8003/users/authorized")
+                .redirectUri(redirectUriLogin)
+                .redirectUri(redirectUriAuthorized)
                 .scope(OidcScopes.OPENID)
                 .scope("read")
                 .scope("write")
