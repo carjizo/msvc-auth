@@ -41,10 +41,10 @@ import org.springframework.security.web.authentication.LoginUrlAuthenticationEnt
 @Configuration
 public class SecurityConfig {
 
-    @Value("${redirect.uri.authorized}")
+    @Value("${REDIRECT_URI_AUTHORIZED}")
     private String redirectUriAuthorized;
 
-    @Value("${redirect.uri.login}")
+    @Value("${REDIRECT_URI_LOGIN}")
     private String redirectUriLogin;
 
 //    @Autowired

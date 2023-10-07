@@ -18,7 +18,7 @@ import java.util.Collections;
 @Service
 public class UserService implements UserDetailsService {
 
-    @Value("${uri.login}")
+    @Value("${URI_LOGIN}")
     private String uriLogin;
 
     @Autowired
