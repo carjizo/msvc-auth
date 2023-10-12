@@ -159,9 +159,10 @@ public class SecurityConfig {
 
     @Bean
     public ProviderSettings providerSettings() {
-        return new ProviderSettings().issuer("https://msvc-auth-production.up.railway.app");
+        return ProviderSettings.builder()
+                .issuer("https://msvc-auth-production.up.railway.app")
+                .build();
     }
-
 }
 
 
