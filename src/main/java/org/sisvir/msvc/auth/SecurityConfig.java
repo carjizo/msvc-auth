@@ -152,9 +152,14 @@ public class SecurityConfig {
         return keyPair;
     }
 
+//    @Bean
+//    public ProviderSettings providerSettings() {
+//        return ProviderSettings.builder().build();
+//    }
+
     @Bean
     public ProviderSettings providerSettings() {
-        return ProviderSettings.builder().build();
+        return new ProviderSettings().issuer("https://msvc-auth-production.up.railway.app");
     }
 
 }
