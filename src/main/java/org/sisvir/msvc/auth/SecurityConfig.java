@@ -123,8 +123,8 @@ public class SecurityConfig {
                 .scope("read")
                 .scope("write")
                 .tokenSettings(TokenSettings.builder()
-                        .accessTokenTimeToLive(Duration.ofMinutes(5))
-                        .refreshTokenTimeToLive(Duration.ofHours(2))
+                        .accessTokenTimeToLive(Duration.ofMinutes(15))
+//                        .refreshTokenTimeToLive(Duration.ofHours(2))
                         .build())
                 .clientSettings(ClientSettings.builder().requireAuthorizationConsent(false).build())
                 .build();
@@ -169,6 +169,13 @@ public class SecurityConfig {
                 .issuer("https://msvc-auth-production.up.railway.app")
                 .build();
     }
+
+//    @Bean
+//    public TokenSettings tokenSettings() {
+//        return TokenSettings.builder()
+//                .accessTokenTimeToLive(Duration.ofMinutes(30L))
+//                .build();
+//    }
 }
 
 
