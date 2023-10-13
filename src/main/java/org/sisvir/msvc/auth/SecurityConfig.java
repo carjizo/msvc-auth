@@ -49,6 +49,9 @@ public class SecurityConfig {
     @Value("${REDIRECT_URI_LOGIN}")
     private String redirectUriLogin;
 
+    @Value("${ISSUER_PROVIDER}")
+    private String issuerProvider;
+
 //    @Autowired
 //    private Environment env;
 //
@@ -165,7 +168,7 @@ public class SecurityConfig {
     @Bean
     public ProviderSettings providerSettings() {
         return ProviderSettings.builder()
-                .issuer("https://msvc-auth-production.up.railway.app")
+                .issuer(issuerProvider)
                 .build();
     }
 
