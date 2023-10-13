@@ -123,8 +123,7 @@ public class SecurityConfig {
                 .scope("read")
                 .scope("write")
                 .tokenSettings(TokenSettings.builder()
-                        .accessTokenTimeToLive(Duration.ofMinutes(15))
-//                        .refreshTokenTimeToLive(Duration.ofHours(2))
+                        .accessTokenTimeToLive(Duration.ofHours(12))
                         .build())
                 .clientSettings(ClientSettings.builder().requireAuthorizationConsent(false).build())
                 .build();
