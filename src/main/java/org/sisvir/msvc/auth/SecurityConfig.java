@@ -63,21 +63,21 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    @Order(1)
-    public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http)
-            throws Exception {
-        OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
-        http
-                // Redirect to the login page when not authenticated from the
-                // authorization endpoint
-                .exceptionHandling((exceptions) -> exceptions
-                        .authenticationEntryPoint(
-                                new LoginUrlAuthenticationEntryPoint("/login"))
-                );
-
-        return http.build();
-    }
+//    @Bean
+//    @Order(1)
+//    public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http)
+//            throws Exception {
+//        OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
+//        http
+//                // Redirect to the login page when not authenticated from the
+//                // authorization endpoint
+//                .exceptionHandling((exceptions) -> exceptions
+//                        .authenticationEntryPoint(
+//                                new LoginUrlAuthenticationEntryPoint("/login"))
+//                );
+//
+//        return http.build();
+//    }
 
     @Bean
     @Order(2)
