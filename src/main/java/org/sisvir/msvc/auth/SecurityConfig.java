@@ -69,9 +69,7 @@ public class SecurityConfig {
     public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http)
             throws Exception {
         OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
-        http
-                .getConfigurer(OAuth2AuthorizationServerConfigurer.class)
-                .oidc(Customizer.withDefaults());   // Enable OpenID Connect 1.0
+
         http
                 // Redirect to the login page when not authenticated from the
                 // authorization endpoint
