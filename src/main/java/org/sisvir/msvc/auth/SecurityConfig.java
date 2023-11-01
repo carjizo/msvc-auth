@@ -67,7 +67,7 @@ public class SecurityConfig {
     @Order(1)
     public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http)
             throws Exception {
-        OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
+//        OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
         http
                 // Redirect to the login page when not authenticated from the
                 // authorization endpoint
