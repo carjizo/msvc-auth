@@ -63,21 +63,21 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-//    @Bean
-//    @Order(1)
-//    public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http)
-//            throws Exception {
-//        OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
-//        http
-//                // Redirect to the login page when not authenticated from the
-//                // authorization endpoint
-//                .exceptionHandling((exceptions) -> exceptions
-//                        .authenticationEntryPoint(
-//                                new LoginUrlAuthenticationEntryPoint("/login"))
-//                );
-//
-//        return http.build();
-//    }
+    @Bean
+    @Order(1)
+    public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http)
+            throws Exception {
+        OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
+        http
+                // Redirect to the login page when not authenticated from the
+                // authorization endpoint
+                .exceptionHandling((exceptions) -> exceptions
+                        .authenticationEntryPoint(
+                                new LoginUrlAuthenticationEntryPoint("/login"))
+                ).formLogin(Customizer.withDefaults()).csrf().disable();
+
+        return http.build();
+    }
 
     @Bean
     @Order(2)
@@ -85,7 +85,6 @@ public class SecurityConfig {
             throws Exception {
         http
                 .authorizeHttpRequests((authorize) -> authorize
-                        .antMatchers("/oauth2/token").permitAll()
                         .anyRequest().authenticated()
                 )
                 // Form login handles the redirect to the login page from the
